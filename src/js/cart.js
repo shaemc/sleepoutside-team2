@@ -30,3 +30,5 @@ function renderCartItem(item) {
 }
 
 getCartContents();
+
+
