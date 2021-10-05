@@ -12,7 +12,7 @@ export function getLocalStorage(key) {
 // save data to local storage
 export function setLocalStorage(key, data) {
   let currentCart = getLocalStorage(key);
-  if(!currentCart) {
+  if (!currentCart) {
     currentCart = [];
   }
   currentCart.push(data);

@@ -1,4 +1,5 @@
 import { setLocalStorage } from "./utils.js";
+
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -8,7 +9,9 @@ export default class ProductDetails {
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProduct();
-    document.getElementById("addToCart").addEventListener("click", this.addToCart.bind(this));
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", this.addToCart.bind(this));
   }
   // add to cart button event handler
   addToCart() {
@@ -32,7 +35,6 @@ export default class ProductDetails {
       <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
     </div></section>`;
   }
-  
 }
 
 // add listener to Add to Cart button
