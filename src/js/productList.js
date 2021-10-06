@@ -1,3 +1,5 @@
+import { renderListWithTemplate } from "./utils";
+
 export default class ProductListing {
   constructor(category, dataSource, listElement) {
     // We passed in this information to make our class as reusable as possible.
@@ -16,17 +18,19 @@ export default class ProductListing {
   }
 
   renderList(list) {
-    const template = document.getElementById("product-card-template");
+    // make sure the list is empty
+    this.listElement.innerHTML = "";
     const filteredList = list.filter(
       (item) => item.Id !== "989CG" && item.Id !== "880RT"
     );
-
-    filteredList.forEach((product) => {
-      const clone = template.content.cloneNode(true);
-      // insert the actual details of the current product into the template
-      const hydratedTemplate = this.prepareTemplate(clone, product);
-      this.listElement.appendChild(hydratedTemplate);
-    });
+    //get the template
+    const template = document.getElementById("product-card-template");
+    renderListWithTemplate(
+      template,
+      this.listElement,
+      filteredList,
+      this.prepareTemplate
+    );
   }
 
   prepareTemplate(template, product) {

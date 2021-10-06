@@ -33,3 +33,16 @@ export default function getParams() {
   const product = urlParams.get("product");
   return product;
 }
+
+export function renderListWithTemplate(
+  template,
+  parentElement,
+  list,
+  callback
+) {
+  list.forEach((element) => {
+    const clone = template.content.cloneNode(true);
+    const templateWithData = callback(clone, element);
+    parentElement.appendChild(templateWithData);
+  });
+}
