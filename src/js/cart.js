@@ -10,7 +10,16 @@ function getCartContents() {
     const htmlItems = cartItems.map((item) => renderCartItem(item));
     console.log(cartItems);
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+    let total = 0;
+    
+    const finalTotal = cartItems.map(item => total += item.FinalPrice).pop()
+
+    console.log(finalTotal);
+    const showTotal = `<h3>Total: $${finalTotal}<h3/>`
+    document.querySelector(".products").innerHTML += showTotal;
   }
+
 
   // document.querySelector('.product-list').innerHTML = renderCartItem(cartItems);
 }
@@ -35,4 +44,6 @@ function renderCartItem(item) {
   return newItem;
 }
 
+
 getCartContents();
+
