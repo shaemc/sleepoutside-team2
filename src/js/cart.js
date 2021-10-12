@@ -1,3 +1,5 @@
+import {loadHeaderFooter} from "./utils";
+
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
@@ -13,7 +15,7 @@ function getCartContents() {
 
     let total = 0;
     
-    const finalTotal = cartItems.map(item => total += item.FinalPrice).pop()
+    const finalTotal = cartItems.map(item => total += item.FinalPrice).pop();
 
     console.log(finalTotal);
     const showTotal = `<h3>Total: $${finalTotal}<h3/>`
@@ -44,6 +46,6 @@ function renderCartItem(item) {
   return newItem;
 }
 
-
 getCartContents();
 
+loadHeaderFooter();
