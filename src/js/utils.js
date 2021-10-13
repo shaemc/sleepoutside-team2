@@ -53,7 +53,7 @@ export function renderWithTemplate(
   data,
   callback
 ) {
-
+  console.log(template);
   let clone = template.content.cloneNode(true);
   if(callback) {
     clone = callback(clone, data);
@@ -61,20 +61,35 @@ export function renderWithTemplate(
   parentElement.appendChild(clone);
 }
 
+function convertToText(res) {
+  if (res.ok){
+    return res.text();
+  } else {
+    throw new Error("Bad Response");
+  }
+}
+
 export async function loadTemplate(path){
-  const html = await fetch(path).then(res => res.json());
+  const html = await fetch(path).then(convertToText);
   const template = document.createElement("template");
   template.innerHTML = html;
   return template;
 }
 
-export function loadHeaderFooter(){
+export async function loadHeaderFooter(){
   const header = document.getElementById("header");
   const footer = document.getElementById("footer");
-  const headerTemplate = loadTemplate("../partials/header.html");
-  const footerTemplate = loadTemplate("../partials/footer.html");
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
   //after the renderWithTemplate has been called, call the superscript function to display the superscript
+
+}
+
+export function animateCart(){
+  // add listener to Add to Cart button
+  let addCart = document.getElementById("addToCart");
+  addCart.style.color = "purple";
 
 }
