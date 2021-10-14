@@ -1,5 +1,7 @@
-import { setLocalStorage } from "./utils.js";
+import { setLocalStorage, animateCart } from "./utils.js";
 
+import {loadHeaderFooter} from "./utils";
+loadHeaderFooter();
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -17,7 +19,9 @@ export default class ProductDetails {
   addToCart() {
     // const product = products.find((item) => item.Id === e.target.dataset.id);
     setLocalStorage("so-cart", this.product);
+  animateCart();
   }
+  
   renderProduct() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>

@@ -53,7 +53,6 @@ export function renderWithTemplate(
   data,
   callback
 ) {
-  console.log(template);
   let clone = template.content.cloneNode(true);
   if(callback) {
     clone = callback(clone, data);
@@ -89,7 +88,16 @@ export async function loadHeaderFooter(){
 
 export function animateCart(){
   // add listener to Add to Cart button
-  let addCart = document.getElementById("addToCart");
-  addCart.style.color = "purple";
-
+  let addCart = document.getElementById("backpack");
+  addCart.style.width = "50px";
+  addCart.style.background = "orange";
+  addCart.animate([
+    // keyframes
+    { transform: "translateY(0px)" },
+    { transform: "translateY(-300px)" }
+  ], {
+    // timing options
+    duration: 1000,
+  });
+  
 }
