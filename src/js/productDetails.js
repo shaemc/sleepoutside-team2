@@ -1,13 +1,14 @@
-import { setLocalStorage, animateCart } from "./utils.js";
+import { setLocalStorage, animateCart, loadHeaderFooter } from "./utils.js";
 
-import {loadHeaderFooter} from "./utils";
 loadHeaderFooter();
+
 export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
   }
+
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProduct();
@@ -15,13 +16,14 @@ export default class ProductDetails {
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
   }
+
   // add to cart button event handler
   addToCart() {
     // const product = products.find((item) => item.Id === e.target.dataset.id);
     setLocalStorage("so-cart", this.product);
-  animateCart();
+    animateCart();
   }
-  
+
   renderProduct() {
     return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>

@@ -201,6 +201,22 @@ button {
   grid-column: 3;
 }
 
+/* Styles for the Products Category section */
+.product-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.product-category {
+  display: grid;
+  place-items: center;
+}
+
+.product-category img {
+  width: 100px;
+  height: 100px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

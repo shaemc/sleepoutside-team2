@@ -12,6 +12,7 @@ export function getLocalStorage(key) {
 // save data to local storage
 export function setLocalStorage(key, data) {
   let currentCart = getLocalStorage(key);
+
   if (!currentCart) {
     currentCart = [];
   }
@@ -27,10 +28,11 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export default function getParams() {
+export default function getParams(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get("product");
+  const product = urlParams.get(param);
+
   return product;
 }
 
@@ -47,35 +49,31 @@ export function renderListWithTemplate(
   });
 }
 
-export function renderWithTemplate(
-  template,
-  parentElement,
-  data,
-  callback
-) {
+export function renderWithTemplate(template, parentElement, data, callback) {
   let clone = template.content.cloneNode(true);
-  if(callback) {
+
+  if (callback) {
     clone = callback(clone, data);
   }
   parentElement.appendChild(clone);
 }
 
 function convertToText(res) {
-  if (res.ok){
+  if (res.ok) {
     return res.text();
   } else {
     throw new Error("Bad Response");
   }
 }
 
-export async function loadTemplate(path){
+export async function loadTemplate(path) {
   const html = await fetch(path).then(convertToText);
   const template = document.createElement("template");
   template.innerHTML = html;
   return template;
 }
 
-export async function loadHeaderFooter(){
+export async function loadHeaderFooter() {
   const header = document.getElementById("header");
   const footer = document.getElementById("footer");
   const headerTemplate = await loadTemplate("../partials/header.html");
@@ -83,21 +81,22 @@ export async function loadHeaderFooter(){
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
   //after the renderWithTemplate has been called, call the superscript function to display the superscript
-
 }
 
-export function animateCart(){
+export function animateCart() {
   // add listener to Add to Cart button
   let addCart = document.getElementById("backpack");
   addCart.style.width = "50px";
   addCart.style.background = "orange";
-  addCart.animate([
-    // keyframes
-    { transform: "translateY(0px)" },
-    { transform: "translateY(-300px)" }
-  ], {
-    // timing options
-    duration: 1000,
-  });
-  
+  addCart.animate(
+    [
+      // keyframes
+      { transform: "translateY(0px)" },
+      { transform: "translateY(-300px)" },
+    ],
+    {
+      // timing options
+      duration: 1000,
+    }
+  );
 }
