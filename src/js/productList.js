@@ -36,7 +36,7 @@ export default class ProductListing {
 
   prepareTemplate(template, product) {
     template.querySelector("a").href += product.Id;
-    template.querySelector("img").src = product.Image;
+    template.querySelector("img").src = product.Images.PrimaryMedium;
     template.querySelector("h3").textContent = product.Brand.Name;
     template.querySelector("h2").textContent = product.Name;
     template.querySelector("p").textContent += product.FinalPrice;
