@@ -217,6 +217,20 @@ button {
   height: 100px;
 }
 
+/* Banner styling */
+#banner {
+  background-color: #CDFFC9;
+  padding: 10px 30px;
+
+}
+
+#banner p {
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
