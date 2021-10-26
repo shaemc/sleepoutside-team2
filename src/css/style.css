@@ -132,6 +132,11 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+#addToCart {
+  cursor: pointer;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
@@ -219,9 +224,8 @@ button {
 
 /* Banner styling */
 #banner {
-  background-color: #CDFFC9;
+  background-color: #cdffc9;
   padding: 10px 30px;
-
 }
 
 #banner p {

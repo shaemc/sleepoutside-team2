@@ -55,6 +55,7 @@ export function renderWithTemplate(template, parentElement, data, callback) {
   if (callback) {
     clone = callback(clone, data);
   }
+
   parentElement.appendChild(clone);
 }
 
@@ -78,6 +79,7 @@ export async function loadHeaderFooter() {
   const footer = document.getElementById("footer");
   const headerTemplate = await loadTemplate("../partials/header.html");
   const footerTemplate = await loadTemplate("../partials/footer.html");
+
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
   //after the renderWithTemplate has been called, call the superscript function to display the superscript

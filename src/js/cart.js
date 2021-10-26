@@ -10,7 +10,6 @@ function getCartContents() {
 
   if (cartItems) {
     const htmlItems = cartItems.map((item) => renderCartItem(item));
-    console.log(cartItems);
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
 
     let total = 0;
@@ -19,7 +18,6 @@ function getCartContents() {
       .map((item) => (total += item.FinalPrice))
       .pop();
 
-    console.log(finalTotal);
     const showTotal = `<h3>Total: $${finalTotal}<h3/>`;
     document.querySelector(".products").innerHTML += showTotal;
   }
@@ -31,7 +29,7 @@ function renderCartItem(item) {
   const newItem = `<li class='cart-card divider'>
   <a href='#' class='cart-card__image'>
     <img
-      src='${item.Image}'
+      src='${item.Images.PrimarySmall}'
       alt='${item.Name}'
     />
   </a>

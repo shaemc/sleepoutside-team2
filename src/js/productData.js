@@ -9,25 +9,17 @@ function convertToJson(res) {
 }
 
 export default class ProductData {
-  constructor() {
-    // this.category = category;
-    // this.path = `../json/${this.category}.json`;
-  }
+  constructor() {}
 
-  // get tents data
-  getProductsData(category) {
-    return fetch(`${baseURL}products/search/${category}`)
+  getData(category) {
+    return fetch(baseURL + `products/search/${category}`)
       .then(convertToJson)
       .then((data) => data.Result);
   }
 
   async findProductById(id) {
-    return await fetch(`${baseURL}products/${id}`)
+    return await fetch(baseURL + `product/${id}`)
       .then(convertToJson)
       .then((data) => data.Result);
   }
 }
-// or should we do it this way?
-// async function getProductsDataAwait() {
-//   products = await fetch('../json/tents.json').then(convertToJson);
-// }

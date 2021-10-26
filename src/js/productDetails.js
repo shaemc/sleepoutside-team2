@@ -25,20 +25,22 @@ export default class ProductDetails {
   }
 
   renderProduct() {
-    return `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3>
-    <h2 class="divider">${this.product.NameWithoutBrand}</h2>
+    const product = this.product;
+
+    return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
+    <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${this.product.Image}"
-      alt="${this.product.NameWithoutBrand}"
+      src="${product.Images.PrimaryMedium}"
+      alt="${product.NameWithoutBrand}"
     />
-    <p class="product-card__price">$${this.product.FinalPrice}</p>
-    <p class="product__color">${this.product.Colors[0].ColorName}</p>
+    <p class="product-card__price">$${product.FinalPrice}</p>
+    <p class="product__color">${product.Colors[0].ColorName}</p>
     <p class="product__description">
-    ${this.product.DescriptionHtmlSimple}
+    ${product.DescriptionHtmlSimple}
     </p>
     <div class="product-detail__add">
-      <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
+      <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
   }
 }
