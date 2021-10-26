@@ -137,7 +137,7 @@ button {
   cursor: pointer;
 }
 
-#remove {
+.remove {
   grid-row: 1/2;
   align-self: flex-start;
   grid-column: 3/4;
