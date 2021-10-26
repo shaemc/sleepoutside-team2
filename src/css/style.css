@@ -137,6 +137,20 @@ button {
   cursor: pointer;
 }
 
+#remove {
+  grid-row: 1/2;
+  align-self: flex-start;
+  grid-column: 3/4;
+  justify-self: flex-end;
+
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
