@@ -81,4 +81,10 @@ function addRemoveListener() {
   );
 }
 
+
+document.getElementById("checkoutButton").onclick = function(event)
+  {event.preventDefault();
+  location.href = "/checkout";
+  }
+
 addRemoveListener();
