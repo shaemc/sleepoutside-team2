@@ -82,7 +82,8 @@ export async function loadHeaderFooter() {
 
   renderWithTemplate(headerTemplate, header);
   renderWithTemplate(footerTemplate, footer);
-  //after the renderWithTemplate has been called, call the superscript function to display the superscript
+
+  renderSuperscript();
 }
 
 export function animateCart() {
@@ -101,4 +102,10 @@ export function animateCart() {
       duration: 1000,
     }
   );
+}
+
+export function renderSuperscript() {
+  const cartItems = getLocalStorage("so-cart").length;
+  const superscript = document.getElementById("superscript");
+  superscript.innerHTML = cartItems;
 }

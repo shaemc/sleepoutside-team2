@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from "./utils";
+import { loadHeaderFooter, renderSuperscript } from "./utils";
 
 function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -71,6 +71,7 @@ function removeItemFromCart(e) {
 
   getCartContents();
   addRemoveListener();
+  renderSuperscript();
 }
 
 function addRemoveListener() {

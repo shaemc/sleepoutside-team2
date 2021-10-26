@@ -1,4 +1,9 @@
-import { setLocalStorage, animateCart, loadHeaderFooter } from "./utils.js";
+import {
+  setLocalStorage,
+  animateCart,
+  loadHeaderFooter,
+  renderSuperscript,
+} from "./utils.js";
 
 loadHeaderFooter();
 
@@ -22,6 +27,7 @@ export default class ProductDetails {
     // const product = products.find((item) => item.Id === e.target.dataset.id);
     setLocalStorage("so-cart", this.product);
     animateCart();
+    renderSuperscript();
   }
 
   renderProduct() {
