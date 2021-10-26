@@ -1,10 +1,10 @@
 import getParams from "./utils.js";
-import ProductData from "./productData.js";
+import ExternalServices from "./ExternalServices.js";
 import ProductDetails from "./productDetails.js";
 
 const productId = getParams("product");
 
-const product = new ProductData();
+const product = new ExternalServices();
 const details = new ProductDetails(productId, product);
 
 details.init();
