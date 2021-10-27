@@ -31,7 +31,7 @@ function renderCartItem(item) {
   const newItem = `<li class='cart-card divider' data-id='${item.Id}'>
   <a href='#' class='cart-card__image'>
     <img
-      src='${item.Image}'
+      src='${item.Images.PrimarySmall}'
       alt='${item.Name}'
     />
   </a>
@@ -82,10 +82,9 @@ function addRemoveListener() {
   );
 }
 
-
-document.getElementById("checkoutButton").onclick = function(event)
-  {event.preventDefault();
+document.getElementById("checkoutButton").onclick = function (event) {
+  event.preventDefault();
   location.href = "/checkout";
-  }
+};
 
 addRemoveListener();
