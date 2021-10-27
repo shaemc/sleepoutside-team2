@@ -7,7 +7,7 @@ function getLocalStorage(key) {
 function getCartContents() {
   let markup = "";
   const cartItems = getLocalStorage("so-cart");
-
+  console.log(cartItems);
   if (cartItems.length > 0) {
     const htmlItems = cartItems.map((item) => renderCartItem(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
@@ -31,7 +31,7 @@ function renderCartItem(item) {
   const newItem = `<li class='cart-card divider' data-id='${item.Id}'>
   <a href='#' class='cart-card__image'>
     <img
-      src='${item.Images.PrimarySmall}'
+      src='${item.Image}'
       alt='${item.Name}'
     />
   </a>
@@ -81,5 +81,11 @@ function addRemoveListener() {
     item.addEventListener("click", removeItemFromCart)
   );
 }
+
+
+document.getElementById("checkoutButton").onclick = function(event)
+  {event.preventDefault();
+  location.href = "/checkout";
+  }
 
 addRemoveListener();

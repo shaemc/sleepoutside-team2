@@ -1,14 +1,14 @@
-import { loadHeaderFooter } from "./utils";
-import getParams from "./utils";
-import ProductData from "./productData";
-import ProductListing from "./productList";
+import { loadHeaderFooter } from "./utils.js";
+import getParams from "./utils.js";
+import ExternalServices from "./ExternalServices.js";
+import ProductListing from "./productList.js";
 
 loadHeaderFooter();
 
 const category = getParams("category");
 
-const productData = new ProductData();
+const externalServices = new ExternalServices();
 const listElement = document.querySelector(".product-list");
-const productList = new ProductListing(category, productData, listElement);
+const productList = new ProductListing(category, externalServices, listElement);
 
 productList.init();
