@@ -184,6 +184,10 @@ button {
   width: 100%;
 }
 
+.product__color {
+  display: flex;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;

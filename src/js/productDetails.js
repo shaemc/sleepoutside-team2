@@ -32,7 +32,7 @@ export default class ProductDetails {
 
   renderProduct() {
     const product = this.product;
-
+    // I'm not sure if I need this line: const colorsHtml = this.renderColors(this.product.Colors);
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
@@ -41,13 +41,23 @@ export default class ProductDetails {
       alt="${product.NameWithoutBrand}"
     />
     <p class="product-card__price">$${product.FinalPrice}</p>
-    <p class="product__color">${product.Colors[0].ColorName}</p>
+    <section class="product__color">${this.renderColors(this.product.Colors)}</section>
     <p class="product__description">
     ${product.DescriptionHtmlSimple}
     </p>
     <div class="product-detail__add">
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
+  }
+
+  renderColors(colors){
+    return colors.map((color) => `
+    <div class="color-radio">
+      <img src="${color.ColorChipImageSrc}" alt="${color.ColorName}">
+      <label for="color">${color.ColorName}</label>
+      <input name="color" type="radio" value="${color.ColorCode}">
+    </div>
+    `).join("");
   }
 }
 
