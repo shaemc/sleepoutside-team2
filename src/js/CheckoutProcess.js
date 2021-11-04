@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils";
+import { getLocalStorage, setLocalStorage } from "./utils";
 import ExternalServices from "./ExternalServices.js";
 
 const services = new ExternalServices();
@@ -15,7 +15,9 @@ function formDataToJSON(formElement) {
 }
 
 function packageItems(items) {
-  const simplifiedItems = items.map((item) => {
+  let simplifiedItems;
+  if (items) {
+  simplifiedItems = items.map((item) => {
     console.log(item);
 
     return {
@@ -25,6 +27,7 @@ function packageItems(items) {
       quantity: 1,
     };
   });
+  }
   return simplifiedItems;
 }
 
@@ -45,10 +48,16 @@ export default class CheckoutProcess {
 
   getSubtotal() {
     const contents = getLocalStorage("so-cart");
-    const pricesArray = contents.map((item) => item.FinalPrice);
-    const subTotal = pricesArray.reduce((acc, curr) => acc + curr);
-
+    let pricesArray;
+    let subTotal;
+    if (contents){
+    pricesArray = contents.map((item) => item.FinalPrice);
+    }
+    if (pricesArray){
+    subTotal = pricesArray.reduce((acc, curr) => acc + curr);
+    }
     return subTotal;
+    
   }
 
   displayStuff() {
@@ -92,8 +101,12 @@ export default class CheckoutProcess {
     try {
       const res = await services.checkout(json);
       console.log(res);
+      location.assign("../checkout/checkedout.html");
+      localStorage.clear();
+
     } catch (err) {
       console.log(err);
+      location.assign("../checkout/failed.html");
     }
   }
 }

@@ -105,7 +105,7 @@ export function animateCart() {
 }
 
 export function renderSuperscript() {
-  const cartItems = getLocalStorage("so-cart").length;
+  const cartItems = getLocalStorage("so-cart").length || 0;
   const superscript = document.getElementById("superscript");
   superscript.innerHTML = cartItems;
 }
